@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore a fictional Baltimore-area mobile mechanic service and try a simulated appointment request.">
+  <meta name="theme-color" content="#1d2221">
+  <title>Bolt &amp; Borough | Mobile Auto</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="./" aria-label="Bolt and Borough home"><span class="logo" aria-hidden="true">ϟ</span><span>Bolt &amp; Borough<small>Mobile Auto</small></span></a>
+      <nav aria-label="Main"><a href="#services">Services</a><a href="#fleet">Fleet</a><a href="#support">Support</a></nav>
+      <a class="button button-small" href="#booking">Check your ZIP <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+  <main id="main">
+    <div class="demo-bar"><div class="wrap">Portfolio demo <span>·</span> Fictional business and example prices</div></div>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="label">Baltimore-area mobile mechanic</p>
+          <h1>Car care.<br><em>At your curb.</em></h1>
+          <p>Oil changes, battery replacements and diagnostics at your driveway or workplace. Check your ZIP to see how a visit would work.</p>
+          <div class="actions"><a class="button" href="#booking">Try a service request <span aria-hidden="true">↗</span></a><a class="secondary" href="#services">Explore services <span aria-hidden="true">↓</span></a></div>
+        </div>
+        <figure class="hero-photo">
+          <img src="assets/van.webp" alt="Charcoal mobile service van parked on a tree-lined street beside brick rowhouses" width="1280" height="850" fetchpriority="high">
+          <figcaption>Illustrative vehicle · Baltimore, MD</figcaption>
+        </figure>
+      </div>
+    </section>
+    <div class="strip"><div class="wrap strip-grid"><span>Driveway or workplace</span><span>Upfront example pricing</span><span>Personal vehicles and small fleets</span></div></div>
+    <section class="wrap section" id="services">
+      <div class="section-heading"><div><p class="label">Services and pricing</p><h2>What we bring to you.</h2></div><p>Illustrative visit ranges. Actual quotes would depend on your vehicle, parts and service needs.</p></div>
+      <div class="cards">
+        <article><h3>Oil &amp; filter change</h3><p>Fresh oil, a replacement filter and a fluid-level check.</p><strong>$79–$109</strong><a href="#booking" data-service="oil">Choose oil change <span aria-hidden="true">↗</span></a></article>
+        <article><h3>Battery replacement</h3><p>Battery and charging checks with a replacement if needed.</p><strong>$159–$259</strong><a href="#booking" data-service="battery">Choose battery service <span aria-hidden="true">↗</span></a></article>
+        <article><h3>Diagnostic visit</h3><p>Help making sense of warning lights, odd noises or a car that won’t start.</p><strong>$95–$125</strong><a href="#booking" data-service="diagnostic">Choose diagnostics <span aria-hidden="true">↗</span></a></article>
+        <article><h3>Routine maintenance</h3><p>A check of tire pressure, fluids, wipers and other wear items.</p><strong>$89–$139</strong><a href="#booking" data-service="maintenance">Choose maintenance <span aria-hidden="true">↗</span></a></article>
+      </div>
+    </section>
+    <section class="booking-section section" id="booking">
+      <div class="wrap split">
+        <div><p class="label">Service area and appointments</p><h2>Plan a visit.</h2><p>Start with a five-digit ZIP. If it’s in our sample service area, choose a service and tell us about your vehicle.</p><p class="hint">Try <strong>21230</strong> for Baltimore, <strong>21075</strong> for Elkridge or <strong>99999</strong> to see the out-of-area result.</p></div>
+        <div class="panel">
+          <noscript><p>Enable JavaScript to run the demo forms. Service information and FAQs are available on this page.</p></noscript>
+          <form id="coverage" hidden autocomplete="off">
+            <label for="zip">Service ZIP code</label>
+            <div class="inline"><input id="zip" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" placeholder="21230" required aria-describedby="zip-help"><button class="button dark" type="submit">Check coverage</button></div>
+            <p class="help" id="zip-help">Enter five digits.</p>
+          </form>
+          <p class="feedback" id="coverage-result" role="status"></p>
+          <form id="appointment" hidden autocomplete="off">
+            <label for="service">Service</label>
+            <select id="service" required><option value="">Choose a service</option><option value="oil">Oil &amp; filter change</option><option value="battery">Battery replacement</option><option value="diagnostic">Diagnostic visit</option><option value="maintenance">Routine maintenance</option></select>
+            <p class="feedback" id="estimate" role="status"></p>
+            <div class="vehicle">
+              <div><label for="year">Year</label><input id="year" type="number" inputmode="numeric" min="1980" max="2028" placeholder="2019" required></div>
+              <div><label for="make">Make</label><input id="make" maxlength="30" pattern=".*\S.*" placeholder="Honda" required></div>
+              <div><label for="model">Model</label><input id="model" maxlength="40" pattern=".*\S.*" placeholder="Civic" required></div>
+            </div>
+            <label for="window">Preferred visit window</label>
+            <select id="window" required><option value="">Choose a window</option><option>Weekday morning</option><option>Weekday afternoon</option><option>Weekend morning</option></select>
+            <p class="help">Use sample details. This demo keeps entries on this page only.</p>
+            <button class="button dark" type="submit">Review demo request</button>
+          </form>
+          <div id="review" hidden>
+            <h3 id="review-heading" tabindex="-1">Review your demo request</h3>
+            <dl id="request-details"></dl>
+            <div class="actions"><button class="button dark" id="confirm" type="button">Complete simulation</button><button class="text-button" id="edit" type="button">Edit details</button></div>
+          </div>
+          <div id="done" hidden>
+            <h3 id="done-heading" tabindex="-1">Demo request complete</h3>
+            <p>Your example request stayed in this tab. No appointment was booked.</p>
+            <button class="text-button" id="restart" type="button">Start another request</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section fleet" id="fleet">
+      <div class="wrap split">
+        <div><p class="label">Commercial fleet service</p><h2>Keep your crew moving.</h2><p>For local teams with light-duty cars and vans, explore recurring maintenance at a shared lot or worksite.</p><ul><li>Scheduled oil changes and vehicle checks</li><li>Grouped visits for multiple vehicles</li><li>Example monthly maintenance planning</li></ul></div>
+        <div class="panel">
+          <h3>Preview a fleet inquiry</h3>
+          <noscript><p>Enable JavaScript to preview an inquiry.</p></noscript>
+          <form id="fleet-form" hidden autocomplete="off">
+            <label for="size">Fleet size</label><select id="size" required><option value="">Choose a range</option><option>2–5 vehicles</option><option>6–15 vehicles</option><option>16–30 vehicles</option><option>31+ vehicles</option></select>
+            <label for="need">Main maintenance need</label><select id="need" required><option value="">Choose a need</option><option>Recurring maintenance</option><option>One-time inspection</option><option>Help planning a service schedule</option></select>
+            <p class="help">No contact details needed for this demo.</p>
+            <button class="button dark" type="submit">Preview inquiry</button>
+          </form>
+          <p class="feedback" id="fleet-result" role="status"></p>
+        </div>
+      </div>
+    </section>
+    <section class="wrap section support" id="support">
+      <div><p class="label">Support</p><h2>Before a visit.</h2><p>For service questions, use the FAQs or check the sample ZIP coverage above. This portfolio demo has no staffed contact channel.</p></div>
+      <div>
+        <details><summary>Where can a visit take place?</summary><p>The scenario assumes a level, legal parking space with permission to work on the vehicle, such as a private driveway or workplace lot.</p></details>
+        <details><summary>What’s included in an estimate?</summary><p>The example ranges illustrate a typical visit with parts and labor. They’re fixed demo values and do not change by vehicle.</p></details>
+        <details><summary>Do you offer emergency roadside service?</summary><p>This concept covers scheduled maintenance and diagnostics. Roadside rescues, towing and major repairs are outside its service scope.</p></details>
+        <details><summary>What happens to my request?</summary><p>The form creates a preview in this tab. Nothing is sent or saved. Reloading the page clears the form.</p></details>
+      </div>
+    </section>
+  </main>
+  <footer><div class="wrap foot"><span>Bolt &amp; Borough Mobile Auto</span><small>Fictional portfolio project · No appointments or payments</small><a href="#main">Back to top ↑</a></div></footer>
+</body>
+</html>
