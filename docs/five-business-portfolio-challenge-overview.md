@@ -29,3 +29,5 @@ Working names for fictional portfolio businesses. Each release gets its own sour
 For each site, capture a brief, research, wireframe, stack decision, MVP evidence and handoff. Move through Research  Planned  Building  Live MVP  Testing  Improving  Portfolio Updated. Record observed behavior before proposing improvements. Schedule no future launches until the preceding project's first release is reviewable.
 
 **First release** � [Bolt & Borough live demo](https://a-feraci.github.io/bolt-and-borough/) � [GitHub repository](https://github.com/a-feraci/bolt-and-borough)
+
+**Second release** · [Velvet Circuit Supply live demo](https://a-feraci.github.io/velvet-circuit-supply/) · [GitHub repository](https://github.com/a-feraci/velvet-circuit-supply)
